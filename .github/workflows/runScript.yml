@@ -17,6 +17,6 @@ jobs:
           python-version: '3.8' # install the python version needed
           
       - name: execute script
-        run: python .github/main.py
+        run: python main.py
 	  
   
