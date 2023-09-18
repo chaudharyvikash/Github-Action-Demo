@@ -1,7 +1,7 @@
 name: python-code
 on:
   schedule:
-    - cron: '*/2 * * * *' #
+    - cron: '*/6 * * * *' #
 
 jobs:
   build:
@@ -14,10 +14,12 @@ jobs:
       - name: setup python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9' # install the python version needed
+          python-version: '3.8' # install the python version needed
           
       - name: install python packages
         run: |
           python -m pip install --upgrade pip
           pip install -r Pipfile
-	  python .github/main.py
+	  
+      - name: executepy script
+	run: python .github/main.py
