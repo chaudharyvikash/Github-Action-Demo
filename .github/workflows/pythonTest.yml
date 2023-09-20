@@ -2,7 +2,7 @@ name: Runs at 8:30 on working days.
 
 on:
   schedule:
-    - cron: "*/6 * * * 1-5"    #runs 
+    - cron: "*/2 * * * 1-5"    #runs 
 
 jobs:
   build:
