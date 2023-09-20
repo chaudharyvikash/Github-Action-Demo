@@ -7,8 +7,8 @@ x = datetime.now()
 
 
 # with name as day-month-year-hours-minutes-seconds
-file_name_2 = x.strftime('%d-%m-%Y-%H-%M-%S.txt')
+var = x.strftime('%d-%m-%Y-%H-%M-%S')
 with open("output.json", 'w') as fp:
-    fp.write(file_name_2)
+    fp.write(var)
 
 fp.close()
