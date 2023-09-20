@@ -1,4 +1,4 @@
-name: Testing schedule run on working days.
+name: Runs every 6 minutes.
 
 on:
   schedule:
