@@ -1,4 +1,4 @@
-name: Runs at 8:30 on working days.
+name: Testing schedule run on working days.
 
 on:
   schedule:
