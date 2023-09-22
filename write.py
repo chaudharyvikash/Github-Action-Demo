@@ -1,6 +1,6 @@
 from datetime import datetime
 import os
-# get current date and time
+# get current date & time
 x = datetime.now()
 
 
