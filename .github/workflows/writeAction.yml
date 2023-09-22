@@ -20,4 +20,10 @@ jobs:
      
       - name: execute py script # run file
         run: |
-          python test.py
+          python main.py
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: output
+          path: output.json
