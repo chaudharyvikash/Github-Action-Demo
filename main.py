@@ -2,7 +2,7 @@
 import os
 from datetime import datetime
 
-# get current date and time
+# get current date & time
 x = datetime.now()
 
 
@@ -11,4 +11,4 @@ var = x.strftime('%d-%m-%Y-%H-%M-%S')
 with open("output.json", 'w') as fp:
     fp.write(var)
 
-fp.close()
+
