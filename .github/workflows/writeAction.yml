@@ -17,6 +17,8 @@ jobs:
       - name: Install dependencies
         run: |
             python -m pip install --upgrade pip
+            pip install pipenv
+            pipenv install
      
       - name: execute py script # run file
         run: |
@@ -30,4 +32,5 @@ jobs:
           
       - name: execute url script # run file
         run: |
-          python url.py
+          pipenv run python url.py
+         
