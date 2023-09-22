@@ -1,4 +1,4 @@
-name: Testing schedule run on working days.
+name: Testing schedule run.
 
 on: push
 
