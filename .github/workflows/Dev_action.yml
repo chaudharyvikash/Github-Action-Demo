@@ -1,4 +1,4 @@
-name: Testing schedule run.
+name: Schedule Run Dev.
 
 on:
   schedule:
