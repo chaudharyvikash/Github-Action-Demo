@@ -1,0 +1,56 @@
+name: Delete cache and Upload Build to Automation Repo
+
+on:  push
+    
+
+jobs:
+  upload-build:
+    runs-on: ['self-hosted', 'Windows', 'X64']
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: check pwd of main repo
+        run: |
+          echo ${{ github.workspace }}
+          cd ${{ github.workspace }}
+
+      - name: Delete Cache file
+        run: |
+            cd ./data/cache1
+            echo "debug: pwd and folder contents"            
+            echo "debug: deleting cache"
+            del bigfixcache.db.txt
+            cd ${{ github.workspace }}
+             
+            
+          
+      - name: Workflow Dispatch and wait
+        uses: aurelien-baudet/workflow-dispatch@v2.1.1            
+        with:
+          workflow: copy_from_repo.yml
+          token: ${{ secrets.ACCESS_TOKEN }}
+
+      - name: Execute python code to create files
+        run: |
+            python create_files.py 
+            
+   
+      - name: Checkout Automation branch
+        uses: actions/checkout@v3    
+        with:
+          repository: chaudharyvikash/Automation          
+          token: ${{ secrets.ACCESS_TOKEN }}
+          path: Automation
+      
+
+      - name: Upload Build folder to Automation
+        run: |
+          cd
+          xcopy /Y build Automation /E
+          cd Automation
+          git config --local user.email "chaudharyvikash2012@gmail.com"
+          git config --local user.name "chaudharyvikash"
+          git add .
+          git commit -m "Upload build from source repository"
+          git push origin main  # or the branch you are working on

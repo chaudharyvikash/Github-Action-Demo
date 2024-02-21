@@ -1,0 +1,31 @@
+name: Copy Contents from Another Repository
+
+on: push
+  
+
+
+jobs:
+  copy_contents:
+    runs-on: ['self-hosted', 'Windows', 'X64']
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Checkout Automation branch
+      uses: actions/checkout@v3    
+      with:
+          repository: chaudharyvikash/Automation          
+          token: ${{ secrets.ACCESS_TOKEN }}
+          path: Automation
+
+    - name: Set up Git and copy
+      run: |      
+          xcopy /Y Automation/test/Hello.py /test /E
+          echo $PWD
+          git config --local user.email "chaudharyvikash2012@gmail.com"
+          git config --local user.name "chaudharyvikash"
+          git add .
+          git commit -m "Upload build from Automation repository"
+          git push origin main 
+   

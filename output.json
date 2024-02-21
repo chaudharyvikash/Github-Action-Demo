@@ -1,0 +1,11 @@
+{"cve": "CVE-2021-27104", "kev_data": 
+  {"cve": "CVE-2021-27104", 
+    "vendor_project": "Accellion", 
+    "product": "FTA",
+    "title": "Accellion FTA OS Command Injection Vulnerability", 
+    "date_added": "11/03/2021",
+    "description": "Accellion FTA contains an OS command injection vulnerability exploited via a crafted POST request to various admin endpoints.", 
+    "required_action": "Apply updates per vendor instructions.",
+    "due_date": "11/17/2021", "notes": ""
+  }
+}

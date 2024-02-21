@@ -1,0 +1,37 @@
+name: Testing schedule run on working days.
+
+on:
+  schedule:
+    - cron: "0 13 * * 1-5"    #runs 
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner.
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8 #install the python needed
+      - name: Install dependencies
+        run: |
+            python -m pip install --upgrade pip
+            pip install pipenv
+            pipenv install
+     
+      - name: execute py script # run file
+        run: |
+          python main.py
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: output
+          path: output.json
+          
+      - name: execute url script # run file
+        run: |
+          pipenv run python url.py
+         

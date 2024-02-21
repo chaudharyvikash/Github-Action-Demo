@@ -1,0 +1,26 @@
+name: upload to another repo.
+on: push
+  
+
+jobs:
+  build:
+    runs-on: [linux-latest]
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v3
+
+
+      - name: Execute python code to create files
+        run: |
+            python create_files.py
+            
+      - name: Pushes to another repository
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.ACCESS_TOKEN }}
+        with:
+          source-directory: './build'
+          destination-github-username: 'chaudharyvikash'
+          destination-repository-name: 'Automation'
+          user-email: chaudharyvikash2012@mail.com
+          target-branch: main

@@ -1,0 +1,47 @@
+name: Copy Folders to different Repos
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  copy-folders:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Execute python code to create files
+        run: |
+            python create_files.py
+          # This program should generate the folders you want to copy
+
+      - name: Copy Folders to Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-folder-artifact
+          path: |
+            build/folder1/
+            build/folder2/
+            build/folder3/
+            build/folder4/
+      - name: Checkout Repository
+        uses: actions/checkout@v2    
+      - name: List Files and Directories
+        run: |
+            cd $GITHUB_WORKSPACE
+            dir /s /b
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: /build/folder1folder1_file.txt
+          path: /build/folder1
+
+      - name: Checkout and Copy to Repo1
+        uses: actions/checkout@v2
+        with:
+          repository: chaudharyvikash/Automation
+          token: ${{ secrets.ACCESS_TOKEN }}
+        

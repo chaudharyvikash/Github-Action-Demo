@@ -1,0 +1,19 @@
+[packages]
+psutil          = "*"
+pdoc            = "*"
+defusedxml      = "*"
+requests = "*"
+msal = "*"
+tqdm            = "*"
+
+[dev-packages]
+path            = "*"
+pylint          = "*"
+setuptools      = "*"
+wheel           = "*"
+invoke          = "*"
+pytest          = "*"
+testfixtures    = "*"
+pytest-cov      = "*"
+pytest-mock     = "*"
+
