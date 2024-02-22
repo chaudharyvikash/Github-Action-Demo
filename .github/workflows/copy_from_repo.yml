@@ -18,11 +18,13 @@ jobs:
           repository: chaudharyvikash/Automation          
           token: ${{ secrets.ACCESS_TOKEN }}
           path: Automation
+        
 
     - name: Set up Git and copy
-      run: |      
-          xcopy /Y Automation/test/Hello.py /test /E
+      run: |
           echo $PWD
+          xcopy /Y Automation/test/Hello.py .
+          
           git config --local user.email "chaudharyvikash2012@gmail.com"
           git config --local user.name "chaudharyvikash"
           git add .
