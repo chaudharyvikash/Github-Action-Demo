@@ -23,12 +23,10 @@ jobs:
         
 
     - name: Set up Git and copy
-      run: |        
+      run: |
+          cd ${{ github.repository }}
           xcopy /Y Automation/test/Hello.py .
           
-          git config --local user.email "chaudharyvikash2012@gmail.com"
-          git config --local user.name "chaudharyvikash"
-          git add .
-          git commit -m "Upload build from Automation repository"
-          git push origin main 
+          
+          
    
