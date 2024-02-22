@@ -25,7 +25,7 @@ jobs:
     - name: Set up Git and copy
       run: |
           cd ${{ github.repository }}
-          xcopy /Y Automation/test/Hello.py .
+          xcopy /Y Automation/test/Hello.py ${{ github.repository }}/test 
           
           
           
