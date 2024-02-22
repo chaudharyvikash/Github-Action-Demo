@@ -11,18 +11,19 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+          path: ${{ github.repository }}
 
     - name: Checkout Automation branch
       uses: actions/checkout@v3    
       with:
           repository: chaudharyvikash/Automation          
           token: ${{ secrets.ACCESS_TOKEN }}
-          path: Automation
+          path: ${{ github.repository_owner }}/Automation
         
 
     - name: Set up Git and copy
-      run: |
-          echo $PWD
+      run: |        
           xcopy /Y Automation/test/Hello.py .
           
           git config --local user.email "chaudharyvikash2012@gmail.com"
