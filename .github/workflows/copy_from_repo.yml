@@ -23,6 +23,7 @@ jobs:
         
 
     - name: Set up Git and copy
+      shell: cmd
       run: |
           cd ${{ github.repository }}          
           IF exist "Automation/data.zip" ( echo data.zip exists ) ELSE ( echo data.zip not exists )
