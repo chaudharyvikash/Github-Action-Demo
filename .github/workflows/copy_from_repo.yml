@@ -25,6 +25,7 @@ jobs:
     - name: Set up Git and copy
       run: |
           cd ${{ github.repository }}
+          xcopy Automation/data.zip Github-Action-Demo/data /Y /E
      
           
           
