@@ -24,8 +24,8 @@ jobs:
 
     - name: Set up Git and copy
       run: |
-          cd ${{ github.repository }}
-          xcopy Automation/data.zip Github-Action-Demo/data /Y /E
+          cd ${{ github.repository }}          
+          IF exist "Automation/data.zip" ( echo data.zip exists ) ELSE ( echo data.zip not exists )
      
           
           
