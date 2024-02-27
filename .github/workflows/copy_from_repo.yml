@@ -34,7 +34,7 @@ jobs:
       shell: cmd
       run: |
           cd ${{ github.repository_owner }}/Automation         
-          IF exist "Automation/data.zip" ( echo data.zip exists ) ELSE ( echo data.zip not exists )
+          IF exist "data.zip" ( echo data.zip exists ) ELSE ( echo data.zip not exists )
           dir "data.zip" /s
      
           
