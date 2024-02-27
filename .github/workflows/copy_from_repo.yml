@@ -14,12 +14,6 @@ jobs:
       with:
           path: ${{ github.repository }}
 
-    - name: Checkout Automation branch
-      uses: actions/checkout@v3    
-      with:
-          repository: chaudharyvikash/Automation          
-          token: ${{ secrets.ACCESS_TOKEN }}
-          path: ${{ github.repository_owner }}/Automation
           
     - name: Sparse-Checkout Automation branch
       uses: actions/checkout@v4
