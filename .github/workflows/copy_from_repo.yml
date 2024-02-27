@@ -33,7 +33,8 @@ jobs:
     - name: Set up Git and copy
       shell: cmd
       run: |
-          cd ${{ github.repository_owner }}/Automation         
+          cd ${{ github.repository_owner }}/Automation 
+          dir
           IF exist "data.zip" ( echo data.zip exists ) ELSE ( echo data.zip not exists )
           dir "data.zip" /s
      
