@@ -26,8 +26,7 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
     - name: Set up Git and copy
       shell: cmd
-      run: |
-          cd ${{ github.repository_owner }}/Automation 
+      run: |          
           dir
           IF exist "test" ( echo folder exists ) ELSE ( echo folder not exists )
           dir "test" /s
