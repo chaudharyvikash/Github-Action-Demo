@@ -30,7 +30,7 @@ jobs:
             test
             data.zip
           sparse-checkout-cone-mode: false
-          token: ${{ secrets.ACCESS_TOKEN }} ```
+          token: ${{ secrets.ACCESS_TOKEN }}
     - name: Set up Git and copy
       shell: cmd
       run: |
