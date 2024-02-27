@@ -35,7 +35,7 @@ jobs:
       run: |
           cd ${{ github.repository_owner }}/Automation 
           dir
-          IF exist "data.zip" ( echo data.zip exists ) ELSE ( echo data.zip not exists )
+          IF exist "test" ( echo folder exists ) ELSE ( echo folder not exists )
           dir "data.zip" /s
      
           
