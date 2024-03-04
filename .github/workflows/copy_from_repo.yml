@@ -31,10 +31,15 @@ jobs:
           path: maindir/Automation         
           token: ${{ secrets.NEW_PAT }}
 
-    - name: Dir the workspace
+    - name: Dir the workspace - automation
       shell: cmd
       run: |      
           dir
+
+    - name: Dir the maindir - automation
+      shell: cmd
+      run: |      
+          dir maindir
     # - name: Set up Git and copy
     #   shell: cmd
     #   run: |      
