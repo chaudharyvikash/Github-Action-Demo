@@ -11,17 +11,24 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        path: maindir/Github-Action-Demo
 
     - name: Dir the workspace
       shell: cmd
       run: |      
           dir
+
+    - name: Dir the maindir
+      shell: cmd
+      run: |      
+          dir maindir
           
     - name: Checkout Automation branch
       uses: actions/checkout@v4
       with:
           repository: chaudharyvikash/Automation
-          path: Github-Action-Demo/Automation         
+          path: maindir/Automation         
           token: ${{ secrets.NEW_PAT }}
 
     - name: Dir the workspace
