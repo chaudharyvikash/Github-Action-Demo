@@ -11,24 +11,31 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-      with:
-          path: chaudharyvikash/Github-Action-Demo
 
+    - name: Dir the workspace
+      shell: cmd
+      run: |      
+          dir
           
     - name: Checkout Automation branch
       uses: actions/checkout@v4
       with:
           repository: chaudharyvikash/Automation
-          path: chaudharyvikash/Automation         
+          path: Github-Action-Demo/Automation         
           token: ${{ secrets.NEW_PAT }}
-    - name: Set up Git and copy
+
+    - name: Dir the workspace
       shell: cmd
       run: |      
-          cd chaudharyvikash/Automation
           dir
-          IF exist "test" ( echo folder exists ) ELSE ( echo folder not exists )
+    # - name: Set up Git and copy
+    #   shell: cmd
+    #   run: |      
+    #       cd chaudharyvikash/Automation
+    #       dir
+    #       IF exist "test" ( echo folder exists ) ELSE ( echo folder not exists )
                 
-          copy data.zip ./../Github-Action-Demo/data/cache1 /E /Y
+    #       copy data.zip ./../Github-Action-Demo/data/cache1 /E /Y
      
           
           
