@@ -19,7 +19,7 @@ jobs:
       uses: actions/checkout@v4
       with:
           repository: chaudharyvikash/Automation
-          path: ${{ github.repository }}/Automation          
+          path: ${{ github.repository_owner }}/Automation          
           token: ${{ secrets.NEW_PAT }}
     - name: Set up Git and copy
       shell: cmd
@@ -29,7 +29,7 @@ jobs:
           IF exist "test" ( echo folder exists ) ELSE ( echo folder not exists )
           dir "test" /s
          
-          xcopy /Y data.zip ./../Github-Action-Demo/data/cache1 /E
+          xcopy data.zip ./../Github-Action-Demo/data/cache1 /E /Y
      
           
           
