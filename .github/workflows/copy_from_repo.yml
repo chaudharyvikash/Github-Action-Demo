@@ -47,7 +47,7 @@ jobs:
           dir
           IF exist "test" ( echo folder exists ) ELSE ( echo folder not exists )
                 
-          copy data.zip .\..\Github-Action-Demo
+          xcopy data.zip .\..\Github-Action-Demo /E /Y
      
           
           
