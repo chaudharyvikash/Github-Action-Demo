@@ -48,7 +48,7 @@ jobs:
           dir
           IF exist "test" ( echo folder exists ) ELSE ( echo folder not exists )
                 
-          xcopy data.zip .\..\Github-Action-Demo /E /Y
+          xcopy sample.txt .\..\Github-Action-Demo /E /Y
           cd .\..\Github-Action-Demo
           git config user.email "chaudharyvikash2012@gmail.com"
           git config user.name "chaudharyvikash"
