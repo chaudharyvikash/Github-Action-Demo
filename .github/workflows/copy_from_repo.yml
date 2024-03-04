@@ -12,17 +12,14 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
       with:
-          path: ${{ github.repository }}
+          path: ${{ github.repository_owner }}/Github-Action-Demo
 
           
     - name: Sparse-Checkout Automation branch
       uses: actions/checkout@v4
       with:
           repository: chaudharyvikash/Automation
-          path: ${{ github.repository_owner }}/Automation
-          sparse-checkout: |
-            test            
-          sparse-checkout-cone-mode: false
+          path: ${{ github.repository_owner }}/Automation          
           token: ${{ secrets.ACCESS_TOKEN }}
     - name: Set up Git and copy
       shell: cmd
@@ -31,7 +28,8 @@ jobs:
           dir
           IF exist "test" ( echo folder exists ) ELSE ( echo folder not exists )
           dir "test" /s
-          xcopy /Y data.zip ${{ github.repository }}/test /E
+         
+          xcopy /Y data.zip ./../Github-Action-Demo/data/cache1 /E
      
           
           
