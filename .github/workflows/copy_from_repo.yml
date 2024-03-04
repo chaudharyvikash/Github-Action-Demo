@@ -20,7 +20,7 @@ jobs:
       with:
           repository: chaudharyvikash/Automation
           path: ${{ github.repository }}/Automation          
-          token: ${{ secrets.ACCESS_TOKEN }}
+          token: ${{ secrets.NEW_PAT }}
     - name: Set up Git and copy
       shell: cmd
       run: |      
