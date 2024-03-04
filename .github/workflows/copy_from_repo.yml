@@ -48,6 +48,13 @@ jobs:
           IF exist "test" ( echo folder exists ) ELSE ( echo folder not exists )
                 
           xcopy data.zip .\..\Github-Action-Demo /E /Y
+          cd .\..\Github-Action-Demo
+          git config --local user.email "chaudharyvikash2012@gmail.com"
+          git config --local user.name "chaudharyvikash"
+          git add .
+          git commit -m "Upload zip from Automation repository"
+          git push origin main 
+		  
      
           
           
