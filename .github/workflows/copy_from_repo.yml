@@ -29,7 +29,7 @@ jobs:
           IF exist "test" ( echo folder exists ) ELSE ( echo folder not exists )
           dir "test" /s
          
-          xcopy data.zip ./../Github-Action-Demo/data/cache1 /E /Y
+          copy data.zip ./../Github-Action-Demo/data/cache1 /E /Y
      
           
           
