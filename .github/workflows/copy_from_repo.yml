@@ -53,10 +53,4 @@ jobs:
           git config --local user.name "chaudharyvikash"
           git add .
           git commit -m "Upload zip from Automation repository"
-          git push origin main 
-		  
-     
-          
-          
-          
-   
+          git push origin main
