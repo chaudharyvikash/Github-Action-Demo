@@ -19,7 +19,10 @@ jobs:
       shell: cmd
       run: |      
           dir
-
+    - name: Execute python code to create files and dir to see
+      run: |
+            python create_files.py
+            dir
     - name: Dir the maindir
       shell: cmd
       run: |      
