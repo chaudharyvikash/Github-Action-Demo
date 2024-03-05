@@ -21,7 +21,8 @@ jobs:
           dir
           
     - name: Delete Cache file
-      run: | 
+      run: |
+            cd maindir/Github-Action-Demo
             dir
             del data.zip    # cd ./data/cache1 
             cd ${{ github.workspace }}
