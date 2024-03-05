@@ -19,10 +19,14 @@ jobs:
       shell: cmd
       run: |      
           dir
-    - name: Execute python code to create files and dir to see
-      run: |
-            python create_files.py
-            dir
+          
+    - name: Delete Cache file
+      run: |            
+            echo "debug: dir and folder contents"  # cd ./data/cache1          
+            echo "debug: deleting cache"
+            del data.zip
+            cd ${{ github.workspace }}
+            
     - name: Dir the maindir
       shell: cmd
       run: |      
