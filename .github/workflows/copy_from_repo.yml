@@ -21,11 +21,12 @@ jobs:
           dir
           
     - name: Delete Cache file
-      run: |            
-            echo "debug: dir and folder contents"  # cd ./data/cache1          
-            echo "debug: deleting cache"
-            del data.zip
+      run: | 
+            dir
+            del data.zip    # cd ./data/cache1 
             cd ${{ github.workspace }}
+            echo "after deleting"
+            dir
             
     - name: Dir the maindir
       shell: cmd
