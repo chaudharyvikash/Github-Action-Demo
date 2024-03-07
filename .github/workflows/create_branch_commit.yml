@@ -14,14 +14,14 @@ jobs:
       - name: Generate branch name
         id: branch_name_generator
         run: |
-          echo "::set-output name=generated_branch_name::$(date +'%Y_%m_%d')"
+          echo ${{ github.event.repository.updated_at}}
       
       - name: Create new branch of site repo
         id: create_branch
         run: |
           cd chaudharyvikash/Automation
           echo "::set-output name=local_site_folder::$(pwd)"
-          git checkout -b ${{ steps.branch_name_generator.outputs.generated_branch_name }}
+          git checkout -b ${{ github.event.repository.updated_at}}
 
       - name: Commit changes
         run: |
