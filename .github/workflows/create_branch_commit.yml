@@ -10,7 +10,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-
+      - name: Checkout Automation branch
+        uses: actions/checkout@v4
+        with:
+          repository: chaudharyvikash/Automation
+          path: maindir/Automation         
+          token: ${{ secrets.NEW_PAT }}
+          
       - name: Generate branch name
         id: branch_name_generator
         run: |
