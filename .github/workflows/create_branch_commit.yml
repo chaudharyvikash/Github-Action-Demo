@@ -10,15 +10,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Create new branch
-        run: |
-          git checkout -b dev-branch
-          git branch # optional - for verification
 
-      - name: Write file
+      - name: Generate branch name
+        id: branch_name_generator
         run: |
-          echo "Hello, world!" > new-file.txt
-          type new-file.txt # optional - for verification
+          echo "::set-output name=generated_branch_name::$(date +'%Y_%m_%d')"
+      
+      - name: Create new branch of site repo
+        id: create_branch
+        run: |
+          cd chaudharyvikash/Automation
+          echo "::set-output name=local_site_folder::$(pwd)"
+          git checkout -b ${{ steps.branch_name_generator.outputs.generated_branch_name }}
 
       - name: Commit changes
         run: |
@@ -27,8 +30,8 @@ jobs:
           git config --local user.name "chaudharyvikash"
           git commit -m "Add new file"
       
-      - name: Push changes
-        uses: ad-m/github-push-action@v0.7.0
-        with:
-          branch: dev-branch
-          github_token: ${{ secrets.NEW_PAT }}
+      # - name: Push changes
+      #   uses: ad-m/github-push-action@v0.7.0
+      #   with:
+      #     branch: dev-branch
+      #     github_token: ${{ secrets.NEW_PAT }}
