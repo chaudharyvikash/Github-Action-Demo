@@ -64,3 +64,12 @@ jobs:
           git add --all
           git commit -m "Upload zip from Automation repository"
           git push origin main
+
+    - name: Set up Git and copy
+      shell: cmd
+      run: |      
+          cd maindir/Github-Action-Demo
+          dir
+          IF exist "test" ( echo folder exists ) ELSE ( echo folder not exists )
+                
+          
