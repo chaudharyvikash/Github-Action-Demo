@@ -21,16 +21,16 @@ jobs:
           path: Automation         
           token: ${{ secrets.NEW_PAT }}
 
-      # - name: Generate branch name with shell script
-      #   id: generate-branch-name
-      #   run: echo "::set-output name=branch_name::$(Get-Date -Format 'yyyy-MM-dd')"
+      - name: Generate branch name with shell script
+        id: generate-branch-name
+        run: echo "::set-output name=branch_name::$(Get-Date -Format 'yyyy-MM-dd')"
 
       - name: Create new branch
         run: |
           dir
           cd Automation
           git branch
-          git checkout -b 2024-03-08
+          # git checkout -b 2024-03-08
           #${{ steps.generate-branch-name.outputs.branch_name }}
           git rm -rf .
           dir
