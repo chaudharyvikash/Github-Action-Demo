@@ -17,27 +17,37 @@ jobs:
           path: maindir/Automation         
           token: ${{ secrets.NEW_PAT }}
           
-      - name: Generate branch name
-        id: branch_name_generator
-        run: |
-          echo ${{ github.event.repository.updated_at}}
-      
-      - name: Create new branch of site repo
-        id: create_branch
-        run: |
-          cd chaudharyvikash/Automation
-          echo "::set-output name=local_site_folder::$(pwd)"
-          git checkout -b ${{ github.event.repository.updated_at}}
+      # - name: Generate branch name with github event
+      #   id: branch_name_generator
+      #   run: |
+      #     echo ${{ github.event.repository.updated_at}}
+      - name: Generate branch name with shell script
+        id: generate-branch-name
+        run: echo "::set-output name=branch_name::$(Get-Date -Format 'yyyy-MM-dd')"
 
-      - name: Commit changes
-        run: |
-          git add .
-          git config --local user.email "chaudharyvikash2012@gmail.com"
-          git config --local user.name "chaudharyvikash"
-          git commit -m "Add new file"
+      - name: Create new branch
+        run: git checkout -b ${{ steps.generate-branch-name.outputs.branch_name }}
+
+      - name: Write file
+        run: echo "Hello, world!" > new-file.txt
       
-      # - name: Push changes
-      #   uses: ad-m/github-push-action@v0.7.0
-      #   with:
-      #     branch: dev-branch
-      #     github_token: ${{ secrets.NEW_PAT }}
+      # - name: Create new branch of site repo
+      #   id: create_branch
+      #   run: |
+      #     cd chaudharyvikash/Automation
+      #     echo "::set-output name=local_site_folder::$(pwd)"
+      #     git checkout -b ${{ github.event.repository.updated_at}}
+
+      # - name: Commit changes
+      #   run: |
+      #     git add .
+      #     git config user.email "chaudharyvikash2012@gmail.com"
+      #     git config user.name "chaudharyvikash"
+      #     git commit -m "Add new file"
+      #     git push origin -u bgfit-1039
+      
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.7.0
+        with:
+          branch: ${{ steps.generate-branch-name.outputs.branch_name }}
+          github_token: ${{ secrets.NEW_PAT }}
