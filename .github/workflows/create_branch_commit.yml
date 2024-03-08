@@ -42,14 +42,14 @@ jobs:
       # - name: Create new branch of site repo
       #   id: create_branch
       #   run: |
-      #     cd chaudharyvikash/Automation
+      #     cd maindir/Automation
       #     echo "::set-output name=local_site_folder::$(pwd)"
       #     git checkout -b ${{ github.event.repository.updated_at}}
 
       - name: Commit changes
         run: |
           dir
-          cd chaudharyvikash/Automation
+          cd maindir/Automation
           git add .
           git config user.email "chaudharyvikash2012@gmail.com"
           git config user.name "chaudharyvikash"
