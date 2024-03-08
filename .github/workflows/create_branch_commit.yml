@@ -26,7 +26,9 @@ jobs:
         run: echo "::set-output name=branch_name::$(Get-Date -Format 'yyyy-MM-dd')"
 
       - name: Create new branch
-        run: git checkout -b ${{ steps.generate-branch-name.outputs.branch_name }}
+        run: |
+          git checkout -b ${{ steps.generate-branch-name.outputs.branch_name }}
+          dir
 
       - name: Write file
         run: echo "Hello, world!" > new-file.txt
@@ -38,16 +40,18 @@ jobs:
       #     echo "::set-output name=local_site_folder::$(pwd)"
       #     git checkout -b ${{ github.event.repository.updated_at}}
 
-      # - name: Commit changes
-      #   run: |
-      #     git add .
-      #     git config user.email "chaudharyvikash2012@gmail.com"
-      #     git config user.name "chaudharyvikash"
-      #     git commit -m "Add new file"
-      #     git push origin -u bgfit-1039
+      - name: Commit changes
+        run: |
+          dir
+          cd chaudharyvikash/Automation
+          git add .
+          git config user.email "chaudharyvikash2012@gmail.com"
+          git config user.name "chaudharyvikash"
+          git commit -m "Add new file"
+          git push origin -u ${{ steps.generate-branch-name.outputs.branch_name }}
       
-      - name: Push changes
-        uses: ad-m/github-push-action@v0.7.0
-        with:
-          branch: ${{ steps.generate-branch-name.outputs.branch_name }}
-          github_token: ${{ secrets.NEW_PAT }}
+      # - name: Push changes
+      #   uses: ad-m/github-push-action@v0.7.0
+      #   with:
+      #     branch: ${{ steps.generate-branch-name.outputs.branch_name }}
+      #     github_token: ${{ secrets.NEW_PAT }}
