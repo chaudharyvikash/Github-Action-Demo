@@ -31,7 +31,7 @@ jobs:
       - name: Create new branch
         run: |
           dir
-          cd Automation
+          cd maindir/Automation
           git checkout -b ${{ steps.generate-branch-name.outputs.branch_name }} 
           #$(date +'%Y-%m-%d')
           dir
