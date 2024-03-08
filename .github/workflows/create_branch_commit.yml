@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+           path: maindir/Github-Action-Demo 
 
       - name: Checkout Automation branch
         uses: actions/checkout@v4
@@ -28,6 +30,8 @@ jobs:
 
       - name: Create new branch
         run: |
+          dir
+          cd Automation
           git checkout -b ${{ steps.generate-branch-name.outputs.branch_name }} 
           #$(date +'%Y-%m-%d')
           dir
