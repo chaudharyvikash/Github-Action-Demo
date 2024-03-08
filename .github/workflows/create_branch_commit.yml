@@ -13,17 +13,12 @@ jobs:
            path: maindir/Github-Action-Demo 
 
       - name: Checkout Automation branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         with:
           repository: chaudharyvikash/Automation
           path: maindir/Automation         
           token: ${{ secrets.NEW_PAT }}
-          
-      # - name: Generate branch name with github event
-      #   id: branch_name_generator
-      #   run: |
-      #     echo ${{ github.event.repository.updated_at}}
-      
+
       - name: Generate branch name with shell script
         id: generate-branch-name
         run: echo "::set-output name=branch_name::$(Get-Date -Format 'yyyy-MM-dd')"
@@ -33,20 +28,12 @@ jobs:
           dir
           cd maindir/Automation
           git branch
-          git checkout -b ${{ steps.generate-branch-name.outputs.branch_name }} 
-          #$(date +'%Y-%m-%d')
+          git checkout -b ${{ steps.generate-branch-name.outputs.branch_name }}         
           dir
 
       - name: Write file
         run: echo "Hello, world!" > new-file.txt
       
-      # - name: Create new branch of site repo
-      #   id: create_branch
-      #   run: |
-      #     cd maindir/Automation
-      #     echo "::set-output name=local_site_folder::$(pwd)"
-      #     git checkout -b ${{ github.event.repository.updated_at}}
-
       - name: Commit changes
         run: |
           dir
@@ -57,9 +44,4 @@ jobs:
           git commit -m "Add new file"
           git push origin -u ${{ steps.generate-branch-name.outputs.branch_name }}
         
-      
-      # - name: Push changes
-      #   uses: ad-m/github-push-action@v0.7.0
-      #   with:
-      #     branch: ${{ steps.generate-branch-name.outputs.branch_name }}
-      #     github_token: ${{ secrets.NEW_PAT }}
+    
