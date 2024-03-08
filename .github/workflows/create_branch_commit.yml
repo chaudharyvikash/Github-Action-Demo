@@ -30,11 +30,14 @@ jobs:
           dir
           cd Automation
           git branch
-          git checkout -b ${{ steps.generate-branch-name.outputs.branch_name }}         
+          git checkout -b ${{ steps.generate-branch-name.outputs.branch_name }}
+          git rm -rf .
           dir
 
       - name: Write file
-        run: echo "Hello, world!" > new-file.txt
+        run: |
+         cd Automation
+         echo "Hello, world!" > new-file.txt
       
       - name: Commit changes
         run: |
