@@ -32,7 +32,8 @@ jobs:
         run: |
           dir
           cd maindir/Automation
-          git checkout -b ${{ steps.generate-branch-name.outputs.branch_name }} 
+          git branch
+          # git checkout -b ${{ steps.generate-branch-name.outputs.branch_name }} 
           #$(date +'%Y-%m-%d')
           dir
 
