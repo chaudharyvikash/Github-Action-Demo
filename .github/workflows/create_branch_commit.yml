@@ -21,13 +21,15 @@ jobs:
       #   id: branch_name_generator
       #   run: |
       #     echo ${{ github.event.repository.updated_at}}
-      - name: Generate branch name with shell script
-        id: generate-branch-name
-        run: echo "::set-output name=branch_name::$(Get-Date -Format 'yyyy-MM-dd')"
+      
+      # - name: Generate branch name with shell script
+      #   id: generate-branch-name
+      #   run: echo "::set-output name=branch_name::$(Get-Date -Format 'yyyy-MM-dd')"
 
       - name: Create new branch
         run: |
-          git checkout -b ${{ steps.generate-branch-name.outputs.branch_name }}
+          git checkout -b $(date +'%Y-%m-%d')
+          #${{ steps.generate-branch-name.outputs.branch_name }}
           dir
 
       - name: Write file
@@ -48,7 +50,8 @@ jobs:
           git config user.email "chaudharyvikash2012@gmail.com"
           git config user.name "chaudharyvikash"
           git commit -m "Add new file"
-          git push origin -u ${{ steps.generate-branch-name.outputs.branch_name }}
+          git push origin -u $(date +'%Y-%m-%d')
+          #${{ steps.generate-branch-name.outputs.branch_name }}
       
       # - name: Push changes
       #   uses: ad-m/github-push-action@v0.7.0
