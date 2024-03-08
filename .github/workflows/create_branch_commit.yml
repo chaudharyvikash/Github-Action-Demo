@@ -10,13 +10,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-           path: maindir/Github-Action-Demo 
+           clean: true
+           path: Github-Action-Demo 
 
       - name: Checkout Automation branch
         uses: actions/checkout@v3
         with:
+          clean: true
           repository: chaudharyvikash/Automation
-          path: maindir/Automation         
+          path: Automation         
           token: ${{ secrets.NEW_PAT }}
 
       - name: Generate branch name with shell script
@@ -26,7 +28,7 @@ jobs:
       - name: Create new branch
         run: |
           dir
-          cd maindir/Automation
+          cd Automation
           git branch
           git checkout -b ${{ steps.generate-branch-name.outputs.branch_name }}         
           dir
@@ -37,7 +39,7 @@ jobs:
       - name: Commit changes
         run: |
           dir
-          cd maindir/Automation
+          cd Automation
           git add .
           git config user.email "chaudharyvikash2012@gmail.com"
           git config user.name "chaudharyvikash"
