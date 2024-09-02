@@ -6,23 +6,24 @@ jobs:
   generate-name:
     runs-on: [windows-latest]
     steps:
-    # - name: Generate branch name
-    #   id: branch_name_generator
-    #   run: |
-    #       echo "::set-output name=generated_branch_name::$(date +'%Y_%m_%d_%T' | tr : - | tr / -)"
-    #       echo "Branch name: $outputs.generated_branch_name"
-
-    - name: generate name with date
+    - name: Generate branch name
+      id: branch_name_generator
       run: |
-          # Get the current date in the format "yyyymmdd"
-          $branchDate = (Get-Date -Format "yyyyMMdd")
-          
-          # Generate the branch name
-          $branchName = "${branchDate}_Status_Report.csv"
-          
-          # Output the branch name
-          echo "Branch Name: $branchName"
+          echo "::set-output name=generated_branch_name::$(date +'%Y_%m_%d_%T' | tr : - | tr / -)"
+          echo "Branch name: $outputs.generated_branch_name"
+          echo ${{ github.repository_owner }}
 
-          # Optionally, set this as an output for other steps
-          echo "::set-output name=generated_branch_name::$branchName"
-          echo "Branch name: $output.generated_branch_name"
+    # - name: generate name with date
+    #   run: |
+    #       # Get the current date in the format "yyyymmdd"
+    #       $branchDate = (Get-Date -Format "yyyyMMdd")
+          
+    #       # Generate the branch name
+    #       $branchName = "${branchDate}_Status_Report.csv"
+          
+    #       # Output the branch name
+    #       echo "Branch Name: $branchName"
+
+    #       # Optionally, set this as an output for other steps
+    #       echo "::set-output name=generated_branch_name::$branchName"
+    #       echo "Branch name: $output.generated_branch_name"
