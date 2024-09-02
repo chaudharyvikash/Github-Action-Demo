@@ -1,6 +1,6 @@
 name: Generate file name with current date
 
-on: push
+on: schedule
       
 jobs:
   generate-name:
