@@ -1,11 +1,10 @@
 name: Schedule Wiki Synch
 
-on: 
-  push:
+on: push
   #   branches: 
   #     - '**'
-    paths:
-      - '${{ github.repository}}/data/*_Status_Report.csv'  # to monitor for changes
+    # paths:
+    #   - '${{ github.repository}}/data/*_Status_Report.csv'  # to monitor for changes
 
 jobs:
   merge_check:
@@ -26,7 +25,9 @@ jobs:
           token: ${{ secrets.NEW_PAT }}
 
 
-  
+    - name: path to data file
+        echo '${{ github.repository}}/data/*_Status_Report.csv' 
+    
     - name: Run main.py
       run: |
             cd ${{ github.repository_owner }}/Automation
