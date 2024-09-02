@@ -1,0 +1,31 @@
+name: Schedule Wiki Synch
+
+on:
+  push:
+    paths:
+      - '${{ github.repository}}/data/*_Status_Report.csv'  # to monitor for changes
+
+jobs:
+  merge_check:
+    if: github.event.pull_request.merged == true
+    runs-on: [windows-latest]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        path: ${{ github.repository }}
+
+    - name: Checkout  branch
+      uses: actions/checkout@v3
+      with:
+          repository: chaudharyvikash/Automation
+          path: ${{ github.repository_owner }}/Automation         
+          token: ${{ secrets.GIT_TOKEN }}
+
+
+  
+    - name: Run main.py
+      run: |
+            cd ${{ github.repository_owner }}/Automation
+            pipenv run python sysinfo.py
