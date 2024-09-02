@@ -23,7 +23,7 @@ jobs:
       with:
           repository: chaudharyvikash/Automation
           path: ${{ github.repository_owner }}/Automation         
-          token: ${{ secrets.GIT_TOKEN }}
+          token: ${{ secrets.NEW_PAT }}
 
 
   
