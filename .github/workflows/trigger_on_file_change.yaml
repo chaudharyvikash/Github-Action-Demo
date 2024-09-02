@@ -30,4 +30,4 @@ jobs:
     - name: Run main.py
       run: |
             cd ${{ github.repository_owner }}/Automation
-            pipenv run python sysinfo.py
+            python sysinfo.py
