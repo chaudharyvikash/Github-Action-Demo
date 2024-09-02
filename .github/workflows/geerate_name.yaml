@@ -10,7 +10,7 @@ jobs:
       id: branch_name_generator
       run: |
           echo "::set-output name=generated_branch_name::$(date +'%Y_%m_%d_%T' | tr : - | tr / -)"
-          echo "Branch name: $generated_branch_name"
+          echo "Branch name: $outputs.generated_branch_name"
 
     - name: generate name with date
       run: |
@@ -25,4 +25,4 @@ jobs:
 
           # Optionally, set this as an output for other steps
           echo "::set-output name=branch_name::$branchName"
-          echo "New name: $branch_name"
+          echo "New name: $outputs.branch_name"
