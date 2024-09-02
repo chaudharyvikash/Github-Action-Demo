@@ -1,0 +1,30 @@
+name: Check for Status Report File
+
+on:
+  push:  # Trigger on push to any branch
+    branches:
+      - '**'  # You can specify specific branches if needed
+
+jobs:
+  check_status_report:
+    runs-on: [windows-latest]  # Specify Windows environment
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Find Status Report File
+        id: find_file
+        run: |
+          # Search for the file matching the pattern "*_Status_Report.csv"
+          $filePath = Get-ChildItem -Path ${{ github.workspace }} -Filter '*_Status_Report.csv' -Recurse | Select-Object -First 1
+          
+          # Check if the file was found
+          if ($filePath) {
+            Write-Host "Status Report File Found: $filePath"
+            echo "::set-output name=file_path::$filePath"
+          } else {
+            Write-Host "No Status Report File Found"
+            exit 0  # You can change this if you want to handle the absence of the file differently
+          }
+
