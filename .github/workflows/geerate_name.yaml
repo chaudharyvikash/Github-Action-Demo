@@ -25,4 +25,4 @@ jobs:
 
           # Optionally, set this as an output for other steps
           echo "::set-output name=generated_branch_name::$branchName"
-          echo "New name: $outputs.generated_branch_name"
+          echo "Branch name: $outputs.generated_branch_name"
