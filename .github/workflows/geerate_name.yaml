@@ -13,17 +13,18 @@ jobs:
           echo "Branch name: $outputs.generated_branch_name"
           echo ${{ github.repository_owner }}
 
-    # - name: generate name with date
-    #   run: |
-    #       # Get the current date in the format "yyyymmdd"
-    #       $branchDate = (Get-Date -Format "yyyyMMdd")
+    - name: generate name with date
+      run: |
+          # Get the current date in the format "yyyymmdd"
+          $branchDate = (Get-Date -Format "yyyyMMdd")
           
-    #       # Generate the branch name
-    #       $branchName = "${branchDate}_Status_Report.csv"
+          # Generate the branch name
+          $branchName = "${branchDate}_Status_Report.csv"
           
-    #       # Output the branch name
-    #       echo "Branch Name: $branchName"
+          # Output the branch name
+          echo "Branch Name: $branchName"
 
-    #       # Optionally, set this as an output for other steps
-    #       echo "::set-output name=generated_branch_name::$branchName"
-    #       echo "Branch name: $output.generated_branch_name"
+          # Optionally, set this as an output for other steps
+          echo "::set-output name=generated_name::$branchName"
+          echo "Branch name: $output.generated_name"
+          echo ${{ github.repository}}
