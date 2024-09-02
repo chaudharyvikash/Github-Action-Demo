@@ -9,7 +9,7 @@ on: push
 
 jobs:
   merge_check:
-    if: github.event.pull_request.merged == true
+    # if: github.event.pull_request.merged == true
     runs-on: [windows-latest]
 
     steps:
