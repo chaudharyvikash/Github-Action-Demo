@@ -2,6 +2,8 @@ name: Schedule Wiki Synch
 
 on:
   push:
+    branches: 
+      - '**'
     paths:
       - '${{ github.repository}}/data/*_Status_Report.csv'  # to monitor for changes
 
