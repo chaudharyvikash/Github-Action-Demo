@@ -26,6 +26,7 @@ jobs:
 
 
     - name: path to data file
+      run: |
         echo '${{ github.repository}}/data/*_Status_Report.csv' 
     
     - name: Run main.py
