@@ -1,0 +1,12 @@
+name: Generate file name with current date
+
+on: push
+      
+jobs:
+  generate-name:
+    runs-on: [windows-latest]
+    steps:
+    - name: Generate branch name
+      id: branch_name_generator
+      run: |
+          echo "::set-output name=generated_branch_name::$(date +'%Y_%m_%d_%T' | tr : - | tr / -)"
