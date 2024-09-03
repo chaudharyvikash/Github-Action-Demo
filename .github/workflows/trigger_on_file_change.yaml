@@ -1,11 +1,12 @@
 name: Schedule Wiki Synch
 
-on: push
-  #   branches: 
-  #     - '**'
-    paths:
+on: 
+  push:
+    branches:
+      - '**'
+    # paths:
     #   - '${{ github.repository}}/data/*_Status_Report.csv'  # to monitor for changes
-      - 'chaudharyvikash/Github-Action-Demo/data/*_Status_Report.csv'
+      # - 'chaudharyvikash/Github-Action-Demo/data/*_Status_Report.csv'
 
 jobs:
   merge_check:
