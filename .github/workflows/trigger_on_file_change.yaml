@@ -1,13 +1,15 @@
 name: Schedule Wiki Synch
 
-on:
+on: 
   push:
+  #   branches: 
+  #     - '**'
     paths:
       - '${{ github.repository}}/data/*_Status_Report.csv'  # to monitor for changes
 
 jobs:
   merge_check:
-    if: github.event.pull_request.merged == true
+    # if: github.event.pull_request.merged == true
     runs-on: [windows-latest]
 
     steps:
@@ -21,11 +23,11 @@ jobs:
       with:
           repository: chaudharyvikash/Automation
           path: ${{ github.repository_owner }}/Automation         
-          token: ${{ secrets.GIT_TOKEN }}
+          token: ${{ secrets.NEW_PAT }}
 
 
   
     - name: Run main.py
       run: |
             cd ${{ github.repository_owner }}/Automation
-            pipenv run python sysinfo.py
+            python sysinfo.py
