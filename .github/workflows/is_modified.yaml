@@ -1,0 +1,40 @@
+name: Check File Modified.
+
+on:
+  push:
+    branches:
+      - main  # Specify the branch you want to monitor for merges (e.g., main, development)
+    paths:
+      - 'chaudharyvikash/Github-Action-Demo/data/*_Status_Report.csv'  # Specify the file to monitor for changes
+
+jobs:
+  check_file_and_run:
+    runs-on: windows-latest  # Or windows-latest, depending on your environment
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Check if *_Status_Report.csv was modified
+        run: |
+          git fetch origin
+          MODIFIED_FILES=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }})
+          
+          echo "Modified files: $MODIFIED_FILES"
+          
+          if echo "$MODIFIED_FILES" | grep -q "^*_Status_Report.csv$"; then
+            echo "*_Status_Report.csvt was modified in the merge."
+          else
+            echo "*_Status_Report.csv was not modified. Exiting..."
+            exit 0
+          fi
+      - name: Checkout  branch
+        uses: actions/checkout@v3
+        with:
+          repository: chaudharyvikash/Automation
+          path: ${{ github.repository_owner }}/Automation         
+          token: ${{ secrets.NEW_PAT }}
+      - name: Run main.py
+        run: |
+            cd ${{ github.repository_owner }}/Automation
+            python sysinfo.py
